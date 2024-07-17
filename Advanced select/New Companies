@@ -1,0 +1,8 @@
+SELECT company.company_code,founder,COUNT(Distinct Lead_Manager.lead_manager_code),COUNT(Distinct Senior_Manager.senior_manager_code),COUNT(Distinct Manager.manager_code),COUNT(Distinct Employee. employee_code)
+FROM  Company
+JOIN Lead_Manager ON company.company_code=Lead_Manager.company_code
+JOIN Senior_Manager ON Lead_Manager.lead_manager_code =Senior_Manager.lead_manager_code
+JOIN Manager ON Senior_Manager.senior_manager_code = Manager.senior_manager_code
+JOIN Employee ON Manager.manager_code =Employee.manager_code
+GROUP BY  company.company_code,company.founder
+ORDER BY company.company_code
