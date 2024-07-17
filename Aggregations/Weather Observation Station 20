@@ -1,0 +1,11 @@
+
+select round(lat_n,4) from
+(select lat_n, rank() over(order by lat_n) as rank1 
+from station) dummyTable
+where rank1 = 
+(select 
+case 
+when mod(count(*),2) = 0 then round(count(*)/2)
+else round((count(*)+1)/2)
+end as rank1
+from station s2)
