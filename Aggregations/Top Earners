@@ -1,0 +1,5 @@
+select concat((select max(months*salary) from employee), ' ',
+              (select count(*) from
+               (select rank() over (order by months*salary desc) as  
+ 
+                 rnk from employee) t where t.rnk = 1));
