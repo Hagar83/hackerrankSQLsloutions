@@ -1,0 +1,5 @@
+SELECT COUNTRY.Continent , ROUND(AVG(CITY.Population),2)
+FROM COUNTRY
+JOIN CITY 
+ON COUNTRY.Code = CITY.CountryCode
+GROUP BY COUNTRY.Continent
